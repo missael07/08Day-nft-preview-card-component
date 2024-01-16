@@ -1,4 +1,4 @@
-# Project Name - Solution
+# NFT Preview Card Component - Solution
 
 ![](./images/design.png)
 
