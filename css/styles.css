@@ -1,0 +1,263 @@
+/* -----------------
+Tabla de contenidos:
+--------------------
+1. Fuente ................ 11
+2. Variables ............. 17
+3. Estilos generales ..... 32
+-------------------- 
+*/
+
+/* ----- Fuente ----- */
+@import url("https://fonts.google.com/specimen/Outfit");
+
+/* ----- Variables ----- */
+* {
+  --soft-blue: hsl(215, 51%, 70%);
+  --cyan-opacity: hsl(178, 100%, 50%, 0.5);
+  --cyan: hsl(178, 100%, 50%);
+
+  --main-bg: hsl(217, 54%, 11%);
+  --card-bg: hsl(216, 50%, 16%);
+  --line: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-family: "Outfit", sans-serif;
+  --font-size: 50px;
+}
+
+/* ----------------------------- */
+/* ----- Estilos generales ----- */
+/* ----------------------------- */
+body {
+  background-color: var(--main-bg);
+  color: var(--soft-blue);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.u-countdown-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  opacity: 0;
+}
+
+.u-countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.u-countdown-counter {
+  display: flex;
+}
+
+.u-countdown-number {
+  color: #fff;
+  padding: 5px;
+  margin: 0 2px;
+  font-size: var(--font-size);
+  background: var(--card-bg);
+  border-radius: 15px;
+}
+
+.u-countdown-separator {
+  font-size: 24px;
+  color: #fff;
+  margin: 0 5px;
+
+}
+
+.u-countdown-counter:hover {
+  color: var(--cyan-opacity);
+}
+
+.u-countdown-label {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.u-countdown-wrapper.visible {
+  opacity: 1;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: auto;
+  font-family: var(--font-family);
+}
+
+.shadow {
+  filter: drop-shadow(10px 10px 35px var(--line));
+}
+
+.img-container {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.img-container:hover .icon {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.img-bkgd {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: var(--cyan-opacity);
+  box-sizing: border-box;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.img-container svg g {
+  transform: translate(
+    0,
+    0
+  ); /* Ajuste para centrar el icono en el fondo verde */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.card-content-title {
+  color: var(--white);
+}
+
+.card-content-title:hover {
+  color: var(--cyan);
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+p,
+.time-left,
+hr,
+.footer {
+  color: var(--soft-blue);
+}
+
+.pricing {
+  color: var(--cyan);
+}
+
+hr {
+  width: 100%;
+  opacity: 0.3;
+}
+
+.footer {
+  display: flex;
+}
+
+.footer p {
+  display: flex;
+}
+
+.avatar {
+  border-color: var(--soft-blue);
+  border-style: solid;
+  border-radius: 50%;
+  margin-right: 25px;
+  width: 15%;
+}
+
+.author {
+  padding: 0px;
+  margin: 0px 7px;
+  color: var(--white);
+}
+
+.author:hover {
+  color: var(--cyan);
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 379px) {
+    .card {
+      width: 70%;
+    }
+  
+    .img-container .icon {
+      padding: 100px;
+    }
+  }
+
+
+@media only screen and (min-width: 380px) and (max-width: 391px) {
+  .card {
+    width: 70%;
+  }
+
+  .img-container .icon {
+    padding: 110px;
+  }
+}
+
+@media only screen and (min-width: 391px) and (max-width: 600px){
+    .card {
+      width: 70%;
+    }
+  
+    .img-container .icon {
+      padding: 120px;
+    }
+  }
+
+
+  @media only screen and (min-width: 601px) and (max-width: 999px){
+    .card {
+      width: 50%;
+    }
+  
+    .img-container .icon {
+      padding: 160px;
+    }
+  }
+
+
+  @media only screen and (min-width: 1000px) and (max-width: 1300px){
+    .card {
+      width: 30%;
+    }
+  
+    .img-container .icon {
+      padding: 120px;
+    }
+  }
+
+

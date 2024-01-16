@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Nombre del autor" />
+    <meta name="description" content="Descripcion del proyecto" />
+    <!-- Biblioteca de íconos Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Archivo reset Normalize -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <!-- Archivo de estilos -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="./images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <title>NFT Preview Card Component</title>
+  </head>
+
+  <body>
+    <!-- Marcado HTML -->
+
+    <div class="u-countdown-wrapper shadow">
+      <div
+        class="u-countdown-item u-countdown-days u-spacing-15 u-countdown-item-2"
+      >
+        <div class="u-countdown-counter u-countdown-counter-2">
+          <div class="u-countdown-number u-countdown-number-3">0</div>
+          <div class="u-countdown-number u-countdown-number-4">0</div>
+        </div>
+        <div class="u-countdown-label u-text-grey-50 u-countdown-label-2">
+          Days
+        </div>
+      </div>
+      <div class="u-countdown-separator u-countdown-separator-2">:</div>
+      <div
+        class="u-countdown-item u-countdown-hours u-spacing-15 u-countdown-item-3"
+      >
+        <div class="u-countdown-counter u-countdown-counter-3">
+          <div class="u-countdown-number u-countdown-number-6">0</div>
+          <div class="u-countdown-number u-countdown-number-7">0</div>
+        </div>
+        <div class="u-countdown-label u-text-grey-50 u-countdown-label-3">
+          Hours
+        </div>
+      </div>
+      <div class="u-countdown-separator u-countdown-separator-3">:</div>
+      <div
+        class="u-countdown-item u-countdown-minutes u-spacing-15 u-countdown-item-4"
+      >
+        <div class="u-countdown-counter u-countdown-counter-4">
+          <div class="u-countdown-number u-countdown-number-8">0</div>
+          <div class="u-countdown-number u-countdown-number-9">0</div>
+        </div>
+        <div class="u-countdown-label u-text-grey-50 u-countdown-label-4">
+          Minutes
+        </div>
+      </div>
+      <div class="u-countdown-separator u-countdown-separator-4">:</div>
+      <div
+        class="u-countdown-item u-countdown-seconds u-spacing-15 u-countdown-item-5"
+      >
+        <div class="u-countdown-counter u-countdown-counter-5">
+          <div class="u-countdown-number u-countdown-number-10">0</div>
+          <div class="u-countdown-number u-countdown-number-11">0</div>
+        </div>
+        <div class="u-countdown-label u-text-grey-50 u-countdown-label-5">
+          Seconds
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow" onmouseenter="startCountdown()">
+      <div class="img-container">
+        <img src="./images/image-equilibrium.jpg" class="img-bkgd" />
+        <img src="./images/icon-view.svg" class="icon" />
+      </div>
+      <div class="card-content">
+        <div class="card-content-title">Equilibrium #3429</div>
+        <p>Our Equilibrium collection promotes balance and calm.</p>
+        <div class="info">
+          <label class="pricing">
+            <i>
+              <svg width="11" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 10.216 5.5 18 0 10.216l5.5 3.263 5.5-3.262ZM5.5 0l5.496 9.169L5.5 12.43 0 9.17 5.5 0Z"
+                  fill="#00FFF8"
+                />
+              </svg>
+            </i>
+            0.041 ETH
+          </label>
+          <label class="time-left">
+            <i>
+              <svg width="17" height="17" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.305 2.007a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm2.667 7.334H8.305a.667.667 0 0 1-.667-.667V6.007a.667.667 0 0 1 1.334 0v2h2a.667.667 0 0 1 0 1.334Z"
+                  fill="#8BACD9"
+                />
+              </svg>
+            </i>
+            <label class="message">3 days left</label>
+          </label>
+        </div>
+        <hr class="line" />
+        <div class="footer">
+          <img src="./images/image-avatar.png" class="avatar" />
+          <p>
+            Creation of
+            <label class="author">Jules Wyvern</label>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let endDate;
+      let countdownId;
+      let countdownStarted = false;
+
+      function startCountdown() {
+        setTimeout(() => {
+          const countdownWrapper = document.querySelector(
+            ".u-countdown-wrapper"
+          );
+          countdownWrapper.classList.add("visible");
+        }, 1200);
+
+        if (!countdownStarted) {
+          countdownStarted = true;
+
+          const countdownItems = document.querySelectorAll(".u-countdown-item");
+          countdownItems.forEach((item) => item.classList.add("started"));
+
+          const daysToAdd = 3;
+          endDate = new Date();
+          endDate.setDate(endDate.getDate() + daysToAdd);
+
+          countdownId = setInterval(function () {
+            const currentTime = new Date();
+            const timeDifference = endDate - currentTime;
+
+            if (timeDifference <= 0) {
+              clearInterval(countdownId);
+              countdownWrapper.classList.add("hide");
+              countdownWrapper.classList.remove("visible");
+              document.querySelector(".time-left").textContent = "";
+            } else {
+              const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+                .toString()
+                .padStart(2, "0");
+              const hours = Math.floor(
+                (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+              )
+                .toString()
+                .padStart(2, "0");
+              const minutes = Math.floor(
+                (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+              )
+                .toString()
+                .padStart(2, "0");
+              const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000)
+                .toString()
+                .padStart(2, "0");
+
+              document.querySelector(".u-countdown-number-3").textContent =
+                days[0];
+              document.querySelector(".u-countdown-number-4").textContent =
+                days[1];
+
+              document.querySelector(".u-countdown-number-6").textContent =
+                hours[0];
+              document.querySelector(".u-countdown-number-7").textContent =
+                hours[1];
+
+              document.querySelector(".u-countdown-number-8").textContent =
+                minutes[0];
+              document.querySelector(".u-countdown-number-9").textContent =
+                minutes[1];
+
+              document.querySelector(".u-countdown-number-10").textContent =
+                seconds[0];
+              document.querySelector(".u-countdown-number-11").textContent =
+                seconds[1];
+
+              if (
+                days[1] === 0 &&
+                hours[1] === 0 &&
+                minutes[1] === 0 &&
+                seconds[1 === 0]
+              ) {
+              } else {
+                document.querySelector(".message").textContent = `${
+                  +days[1] + 1
+                } days left`;
+              }
+            }
+          }, 1000);
+        }
+      }
+    </script>
+  </body>
+</html>
